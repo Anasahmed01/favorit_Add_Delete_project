@@ -1,1 +1,2 @@
 List favoriteItems = [];
+List favoriteCards = [];
