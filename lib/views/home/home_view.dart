@@ -12,34 +12,6 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  List<Map> products = [
-    {
-      'name': "Biryrani",
-      'price': 2000,
-      'isFavorite': false,
-    },
-    {
-      'name': "Burger",
-      'price': 50,
-      'isFavorite': false,
-    },
-    {
-      'name': "Nihari",
-      'price': 20,
-      'isFavorite': false,
-    },
-    {
-      'name': "Qorma",
-      'price': 200,
-      'isFavorite': false,
-    },
-    {
-      'name': "Mandi",
-      'price': 150,
-      'isFavorite': false,
-    },
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,62 +44,63 @@ class _HomeViewState extends State<HomeView> {
         itemCount: products.length,
         itemBuilder: (context, index) {
           return ListTile(
-              title: Text(products[index]['name']),
-              subtitle: Text("${products[index]['price']}"),
-              trailing: SizedBox(
-                height: 30,
-                width: 100,
-                child: Row(
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        if (products[index]['isFavorite'] == true) {
-                          setState(() {
-                            products[index]['isFavorite'] = false;
-                            favoriteItems.removeWhere(
-                                (element) => element == products[index]);
-                          });
-                        } else {
-                          setState(() {
-                            products[index]['isFavorite'] = true;
-                            favoriteItems.add(products[index]);
-                          });
-                        }
-                        print(favoriteItems);
-                      },
-                      icon: Icon(
-                        Icons.favorite,
-                        color: products[index]['isFavorite']
-                            ? Colors.red
-                            : Colors.grey,
-                      ),
+            title: Text(products[index]['name']),
+            subtitle: Text("${products[index]['price']}"),
+            trailing: SizedBox(
+              height: 30,
+              width: 100,
+              child: Row(
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      if (products[index]['isFavorite'] == true) {
+                        setState(() {
+                          products[index]['isFavorite'] = false;
+                          favoriteItems.removeWhere(
+                              (element) => element == products[index]);
+                        });
+                      } else {
+                        setState(() {
+                          products[index]['isFavorite'] = true;
+                          favoriteItems.add(products[index]);
+                        });
+                      }
+                      print(favoriteItems);
+                    },
+                    icon: Icon(
+                      Icons.favorite,
+                      color: products[index]['isFavorite']
+                          ? Colors.red
+                          : Colors.grey,
                     ),
-                    IconButton(
-                      onPressed: () {
-                        if (products[index]['isFavorite'] == true) {
-                          setState(() {
-                            products[index]['isFavorite'] = false;
-                            favoriteCards.removeWhere(
-                                (element) => element == products[index]);
-                          });
-                        } else {
-                          setState(() {
-                            products[index]['isFavorite'] = true;
-                            favoriteCards.add(products[index]);
-                          });
-                        }
-                        print(favoriteCards);
-                      },
-                      icon: Icon(
-                        Icons.add_card_outlined,
-                        color: products[index]['isFavorite']
-                            ? Colors.red
-                            : Colors.grey,
-                      ),
-                    )
-                  ],
-                ),
-              ));
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      if (products[index]['isFavorite'] == true) {
+                        setState(() {
+                          products[index]['isFavorite'] = false;
+                          favoriteCards.removeWhere(
+                              (element) => element == products[index]);
+                        });
+                      } else {
+                        setState(() {
+                          products[index]['isFavorite'] = true;
+                          favoriteCards.add(products[index]);
+                        });
+                      }
+                      print(favoriteCards);
+                    },
+                    icon: Icon(
+                      Icons.add_card_outlined,
+                      color: products[index]['isFavorite']
+                          ? Colors.blue
+                          : Colors.grey,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
         },
       ),
     );
