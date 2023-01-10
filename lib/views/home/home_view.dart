@@ -53,41 +53,55 @@ class _HomeViewState extends State<HomeView> {
                 ),
               );
             },
-            icon: Icon(Icons.favorite),
-          )
+            icon: const Icon(Icons.favorite),
+          ),
+          IconButton(
+              onPressed: () {}, icon: const Icon(Icons.add_card_outlined))
         ],
       ),
       body: ListView.builder(
-          itemCount: products.length,
-          itemBuilder: (context, index) {
-            return ListTile(
+        itemCount: products.length,
+        itemBuilder: (context, index) {
+          return ListTile(
               title: Text(products[index]['name']),
               subtitle: Text("${products[index]['price']}"),
-              trailing: IconButton(
-                  onPressed: () {
-                    if (products[index]['isFavorite'] == true) {
-                      setState(() {
-                        products[index]['isFavorite'] = false;
-                        favoriteItems.removeWhere(
-                            (element) => element == products[index]);
-                      });
-                    } else {
-                      setState(() {
-                        favoriteItems.add(products[index]);
-                        products[index]['isFavorite'] = true;
-                      });
-                    }
-
-                    print(favoriteItems);
-                  },
-                  icon: Icon(
-                    Icons.favorite,
-                    color: products[index]['isFavorite']
-                        ? Colors.red
-                        : Colors.grey,
-                  )),
-            );
-          }),
+              trailing: Row(
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      if (products[index]['isFavorite'] == true) {
+                        setState(() {
+                          products[index]['isFavorite'] = false;
+                          favoriteItems.removeWhere(
+                              (element) => element == products[index]);
+                        });
+                      } else {
+                        setState(() {
+                          products[index]['isFavorite'] = true;
+                          favoriteItems.add(products[index]);
+                        });
+                      }
+                    },
+                    icon: Icon(
+                      Icons.favorite,
+                      color: products[index]['isFavorite']
+                          ? Colors.red
+                          : Colors.grey,
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.add_card_outlined,
+                      color: products[index]['isFavorite']
+                          ? Colors.red
+                          : Colors.grey,
+                    ),
+                  )
+                ],
+              ));
+        },
+      ),
     );
   }
 }
