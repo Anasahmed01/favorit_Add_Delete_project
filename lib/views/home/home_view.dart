@@ -76,15 +76,15 @@ class _HomeViewState extends State<HomeView> {
                   ),
                   IconButton(
                     onPressed: () {
-                      if (products[index]['isFavorite'] == true) {
+                      if (products[index]['cart'] == true) {
                         setState(() {
-                          products[index]['isFavorite'] = false;
+                          products[index]['cart'] = false;
                           favoriteCards.removeWhere(
                               (element) => element == products[index]);
                         });
                       } else {
                         setState(() {
-                          products[index]['isFavorite'] = true;
+                          products[index]['cart'] = true;
                           favoriteCards.add(products[index]);
                         });
                       }
@@ -92,9 +92,8 @@ class _HomeViewState extends State<HomeView> {
                     },
                     icon: Icon(
                       Icons.add_card_outlined,
-                      color: products[index]['isFavorite']
-                          ? Colors.blue
-                          : Colors.grey,
+                      color:
+                          products[index]['cart'] ? Colors.blue : Colors.grey,
                     ),
                   ),
                 ],

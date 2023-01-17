@@ -9,7 +9,7 @@ class CardView extends StatefulWidget {
 }
 
 class _CardViewState extends State<CardView> {
-  int value = 0;
+  num value = 0;
 
   increment() {
     setState(() {
@@ -41,14 +41,16 @@ class _CardViewState extends State<CardView> {
                 children: [
                   IconButton(
                     onPressed: () {
-                      decrement();
+                      if (favoriteCards[index]['price']) {
+                        favoriteCards[index]['price'] + decrement();
+                      }
                     },
                     icon: const Icon(Icons.minimize),
                   ),
-                  Text('${value}'),
+                  Text('${favoriteCards[index]['price'] + value}'),
                   IconButton(
                     onPressed: () {
-                      increment();
+                      favoriteCards[index]['price'] + increment();
                     },
                     icon: const Icon(Icons.add),
                   ),
