@@ -13,6 +13,11 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -65,7 +70,6 @@ class _HomeViewState extends State<HomeView> {
                           favoriteItems.add(products[index]);
                         });
                       }
-                      print(favoriteItems);
                     },
                     icon: Icon(
                       Icons.favorite,
@@ -88,7 +92,6 @@ class _HomeViewState extends State<HomeView> {
                           favoriteCards.add(products[index]);
                         });
                       }
-                      print(favoriteCards);
                     },
                     icon: Icon(
                       Icons.add_card_outlined,

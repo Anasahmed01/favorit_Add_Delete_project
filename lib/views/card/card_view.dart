@@ -15,14 +15,12 @@ class _CardViewState extends State<CardView> {
     setState(() {
       value++;
     });
-    print(value);
   }
 
   decrement() {
     setState(() {
       value--;
     });
-    print(value);
   }
 
   @override
